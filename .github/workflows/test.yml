@@ -1,0 +1,57 @@
+name: 'build-test'
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout action
+        uses: actions/checkout@v2
+        with:
+          path: action
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Determine npm cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - name: Restore npm cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            node-
+      - name: Build action
+        working-directory: action
+        run: |
+          npm install
+          npm run all
+      - name: Copy assets
+        working-directory: action
+        run: |
+          mkdir public
+          cp -r dist action.yml README.md LICENSE public
+      - name: Checkout test repo
+        uses: actions/checkout@v2
+        with:
+          repository: AllanChain/command4bot
+          path: poetry
+      - uses: Gr1N/setup-poetry@v4
+      - name: Test poetry-cache-action
+        uses: ./action
+        with:
+          working-directory: 'poetry'
+      - name: Deploy to release
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./action/public
+          publish_branch: release

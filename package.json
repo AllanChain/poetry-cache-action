@@ -1,0 +1,39 @@
+{
+  "name": "poetry-cache-action",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Action to handle poetry caching, with utilities to handle tricky cases",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --minify --keep-names --platform=node --target=node12 --outfile=dist/index.js",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "all": "npm run format-check && npm run lint && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllanChain/poetry-action-cache.git"
+  },
+  "keywords": [
+    "actions",
+    "poetry",
+    "cache"
+  ],
+  "author": "Allan Chain",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/cache": "^1.0.7",
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.9",
+    "@typescript-eslint/parser": "^4.8.1",
+    "esbuild": "^0.11.14",
+    "eslint": "^7.17.0",
+    "eslint-plugin-github": "^4.1.1",
+    "prettier": "2.2.1",
+    "typescript": "^4.1.3"
+  }
+}
