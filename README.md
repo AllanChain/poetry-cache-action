@@ -8,6 +8,14 @@ Action to handle poetry caching, with utilities to handle tricky cases
 - validate cache and try reinstall
 - hack to replace mirror url for ci (python-poetry/poetry#1632)
 
+## Usage Example
+
+```yaml
+- uses: actions/checkout@v2
+- uses: Gr1N/setup-poetry@v4
+- uses: allanchain/poetry-cache-action@v0.2.0
+```
+
 ## Inputs
 
 ```yaml
