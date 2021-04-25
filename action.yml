@@ -16,7 +16,7 @@ inputs:
     default: 'true'
   replace-mirror:
     required: false
-    description: 'python-poetry/poetry#1632'
+    description: 'replace mirror url, python-poetry/poetry#1632'
     default: ''
   working-directory:
     required: false
