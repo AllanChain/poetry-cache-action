@@ -40,3 +40,7 @@ Action to handle poetry caching, with utilities to handle tricky cases
     description: 'Working directory of th poetry project'
     default: '.'
 ```
+
+## Outputs
+
+- `cache-hit`
