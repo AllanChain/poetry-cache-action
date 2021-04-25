@@ -62,11 +62,7 @@ async function run(): Promise<void> {
       restoreKey
     ])
     const cacheHit = restored === cacheKey
-    core.saveState('cache', {
-      hit: cacheHit,
-      key: cacheKey,
-      paths: [cachePath]
-    })
+    core.setOutput('cache-hit', cacheHit)
     core.endGroup()
 
     const replaceMirror = core.getInput('replace-mirror')

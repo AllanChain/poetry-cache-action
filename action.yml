@@ -22,6 +22,9 @@ inputs:
     required: false
     description: 'Working directory of th poetry project'
     default: '.'
+outputs:
+  cache-hit:
+    description: 'if "true", cache is restored from the exact cache key'
 runs:
   using: 'node12'
   main: 'dist/index.js'
