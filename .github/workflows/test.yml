@@ -49,9 +49,10 @@ jobs:
         with:
           working-directory: 'poetry'
       - name: Deploy to release
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && github.actor == 'AllanChain'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./action/public
           publish_branch: release
+          enable_jekyll: true
