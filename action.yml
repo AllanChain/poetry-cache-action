@@ -1,6 +1,9 @@
 name: 'Poetry cache action'
 description: 'Action to handle poetry caching, with utilities to handle tricky cases'
 author: 'Allan Chain'
+branding:
+  icon: 'archive'
+  color: 'blue'
 inputs:
   cache-key-prefix:
     required: false
