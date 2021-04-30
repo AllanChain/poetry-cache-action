@@ -1,6 +1,6 @@
 # Poetry Cache Action
 
-Action to handle poetry caching, with utilities to handle tricky cases
+Action to handle poetry **package** caching and installation, with utilities to handle tricky cases
 
 ## Features
 
@@ -12,8 +12,9 @@ Action to handle poetry caching, with utilities to handle tricky cases
 
 ```yaml
 - uses: actions/checkout@v2
+- uses: actions/setup-python@v2
 - uses: Gr1N/setup-poetry@v4
-- uses: allanchain/poetry-cache-action@v0.2.0
+- uses: allanchain/poetry-cache-action@release # or any other tags
 ```
 
 ## Inputs
