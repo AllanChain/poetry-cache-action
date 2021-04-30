@@ -27,10 +27,10 @@ Action to handle poetry caching, with utilities to handle tricky cases
     required: false
     description: 'make sure this module can be imported after installation, default pytest'
     default: 'pytest'
-  install-root:
+  install-args:
     required: false
-    description: 'if "true", remain poetry default, else use `--no-root` when installing'
-    default: 'true'
+    description: 'any args after `poetry install`. Seperated by spaces, as normally do in command line'
+    default: ''
   replace-mirror:
     required: false
     description: 'replace mirror url, python-poetry/poetry#1632'

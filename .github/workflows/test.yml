@@ -42,12 +42,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: AllanChain/command4bot
-          path: poetry
+          path: repo
       - uses: Gr1N/setup-poetry@v4
       - name: Test poetry-cache-action
         uses: ./action
         with:
-          working-directory: 'poetry'
+          working-directory: repo
+          install-args: --no-root
+          cache-key-prefix: anything
       - name: Deploy to release
         if: github.ref == 'refs/heads/main' && github.actor == 'AllanChain'
         uses: peaceiris/actions-gh-pages@v3

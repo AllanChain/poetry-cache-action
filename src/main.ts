@@ -30,8 +30,8 @@ function hashFile(filePath: string): string {
   return hashString(readFileSync(filePath).toString())
 }
 
-async function poetryInstall(withRoot: boolean): Promise<void> {
-  await exec('poetry', withRoot ? ['install'] : ['install', '--no-root'])
+async function poetryInstall(args: string): Promise<void> {
+  await exec(`poetry install ${args}`)
 }
 
 async function checkModule(moduleName: string): Promise<number> {
@@ -73,23 +73,23 @@ async function run(): Promise<void> {
       })
     }
 
-    const installRoot = core.getInput('install-root') === 'true'
+    const installArgs = core.getInput('install-args')
 
     if (!cacheHit)
       await core.group(
         'Run poetry install',
-        async () => await poetryInstall(installRoot)
+        async () => await poetryInstall(installArgs)
       )
 
     const moduleToCheck = core.getInput('ensure-module')
     if (moduleToCheck) {
       core.startGroup('Validate install')
       if (await checkModule(moduleToCheck)) {
-        await poetryInstall(installRoot)
+        await poetryInstall(installArgs)
         // Check again after install
         if (await checkModule(moduleToCheck)) {
           await exec('poetry', ['env', 'remove', 'python'])
-          await poetryInstall(installRoot)
+          await poetryInstall(installArgs)
           // Check again after another install
           if (await checkModule(moduleToCheck)) {
             throw new Error(
