@@ -19,29 +19,49 @@ Action to handle poetry **package** caching and installation, with utilities to 
 
 ## Inputs
 
+### `cache-key-prefix`
+
+This action internally uses `@actions/cache` for caching. By default it generates a hash string based on python version, python installation path, and poetry version. You can add a custom key prefix to have more control over caching.
+
+Default to `'poetry'`
+
+### `ensure-module`
+
+One highlight feature of this action is auto checking cache by importing a module specified by `ensure-module`, and tring to reinstall if import fails.
+
+Default to `'pytest'`
+
+### `install-args`
+
+Any args after `poetry install`. Seperated by spaces, as normally do in command line. e.g.:
+
 ```yaml
-  cache-key-prefix:
-    required: false
-    description: 'custom key prefix for @actions/cache, in addition to platform and poetry version'
-    default: 'poetry'
-  ensure-module:
-    required: false
-    description: 'make sure this module can be imported after installation, default pytest'
-    default: 'pytest'
-  install-args:
-    required: false
-    description: 'any args after `poetry install`. Seperated by spaces, as normally do in command line'
-    default: ''
-  replace-mirror:
-    required: false
-    description: 'replace mirror url, python-poetry/poetry#1632'
-    default: ''
-  working-directory:
-    required: false
-    description: 'Working directory of th poetry project'
-    default: '.'
+install-args: --no-root --no-dev
 ```
+
+Default to `''`
+
+### `replace-mirror`
+
+Hack to replace mirror url for ci ([python-poetry/poetry#1632](https://github.com/python-poetry/poetry/issues/1632)).
+
+The string is passed to sed: `sed -i 's/${replaceMirror}/g'`. e.g.:
+
+```yaml
+replace-mirror: pypi.tuna.tsinghua.edu.cn/pypi.org
+```
+
+Default to do nothing.
+
+### `working-directory`
+
+Working directory of th poetry project.
+
+Default to current directory.
+
 
 ## Outputs
 
-- `cache-hit`
+### `cache-hit`
+
+Whether the cache is resored from the exact key.
