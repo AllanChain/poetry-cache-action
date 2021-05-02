@@ -58,3 +58,5 @@ jobs:
           publish_dir: ./action/public
           publish_branch: release
           enable_jekyll: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
