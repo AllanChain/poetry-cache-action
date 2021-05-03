@@ -1,6 +1,8 @@
 # Poetry Cache Action
 
-Action to handle poetry **package** caching and installation, with utilities to handle tricky cases
+Are you annoyed by random CI failure because poetry cache strangely becomes invalid? This action is for you!
+
+poetry-cache-action is an action to handle poetry **package** caching and installation, with utilities to handle tricky cases.
 
 ## Features
 
