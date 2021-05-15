@@ -33,7 +33,7 @@
     "esbuild": "^0.11.20",
     "eslint": "^7.26.0",
     "eslint-plugin-github": "^4.1.3",
-    "prettier": "2.2.1",
+    "prettier": "2.3.0",
     "typescript": "^4.1.3"
   }
 }
