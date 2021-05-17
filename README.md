@@ -65,7 +65,7 @@ Default to current directory.
 
 When to upload updated cache. `'immediate'` means upload the cache immediately after installing all the packages. `'on-success'` means upload cache after everything is successfully done, just like the official cache action does.
 
-Both of the strategies are useful. Sometime you want to update the cache even though tests fail. And sometimes you just need the default behavior of the official cache action, or rely on cache hit status to do something.
+Both of the strategies are useful. Sometime you want to update the cache even though tests fail. And sometimes you just need the default behavior of the official cache action, or rely on cache hit status to do something, or maybe caching all the pyc files.
 
 Default to `'immediate'`
 
