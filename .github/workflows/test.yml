@@ -50,6 +50,7 @@ jobs:
           working-directory: repo
           install-args: --no-root
           cache-key-prefix: anything
+          upload-strategy: on-success
       - name: Deploy to release
         if: github.ref == 'refs/heads/main' && github.actor == 'AllanChain'
         uses: peaceiris/actions-gh-pages@v3

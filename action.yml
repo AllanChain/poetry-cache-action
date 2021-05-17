@@ -23,11 +23,17 @@ inputs:
     default: ''
   working-directory:
     required: false
-    description: 'Working directory of th poetry project'
+    description: 'working directory of the poetry project'
     default: '.'
+  upload-strategy:
+    required: false
+    description: 'when to upload updated cache, `immediate` or `on-success`'
+    default: 'immediate'
 outputs:
   cache-hit:
     description: 'if "true", cache is restored from the exact cache key'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: 'dist/main.js'
+  post: 'dist/cleanup.js'
+  post-if: 'success()'

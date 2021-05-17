@@ -5,7 +5,7 @@
   "description": "Action to handle poetry caching, with utilities to handle tricky cases",
   "main": "lib/main.js",
   "scripts": {
-    "build": "esbuild src/main.ts --bundle --minify --keep-names --platform=node --target=node12 --outfile=dist/index.js",
+    "build": "esbuild --bundle --minify --keep-names --platform=node --target=node12 --outdir=dist src/main.ts src/cleanup.ts",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
