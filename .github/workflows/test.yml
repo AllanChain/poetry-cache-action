@@ -17,22 +17,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Determine npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Restore npm cache
-        uses: actions/cache@v2
+      - uses: bahmutov/npm-install@v1
         with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            node-
+          working-directory: action
       - name: Build action
         working-directory: action
-        run: |
-          npm install
-          npm run all
+        run: npm run all
       - name: Copy assets
         working-directory: action
         run: |
