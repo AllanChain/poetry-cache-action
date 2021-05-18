@@ -16,7 +16,7 @@ poetry-cache-action is an action to handle poetry **package** caching and instal
 - uses: actions/checkout@v2
 - uses: actions/setup-python@v2
 - uses: Gr1N/setup-poetry@v4
-- uses: allanchain/poetry-cache-action@release # or any other tags
+- uses: allanchain/poetry-cache-action@v0.2.3 # or any other tags
 ```
 
 ## Inputs
