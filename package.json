@@ -23,7 +23,7 @@
   "author": "Allan Chain",
   "license": "MIT",
   "dependencies": {
-    "@actions/cache": "^3.0.1",
+    "@actions/cache": "^3.0.3",
     "@actions/core": "^1.8.0",
     "@actions/exec": "^1.1.1"
   },
