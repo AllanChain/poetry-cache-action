@@ -33,7 +33,7 @@ jobs:
         with:
           repository: AllanChain/command4bot
           path: repo
-      - uses: Gr1N/setup-poetry@v4
+      - uses: Gr1N/setup-poetry@v7
       - name: Test poetry-cache-action
         uses: ./action
         with:
