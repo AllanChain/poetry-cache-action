@@ -33,7 +33,7 @@ outputs:
   cache-hit:
     description: 'if "true", cache is restored from the exact cache key'
 runs:
-  using: 'node20'
+  using: 'node16'
   main: 'dist/main.js'
   post: 'dist/cleanup.js'
   post-if: 'success()'
