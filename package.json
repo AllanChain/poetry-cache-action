@@ -5,11 +5,10 @@
   "description": "Action to handle poetry caching, with utilities to handle tricky cases",
   "main": "lib/main.js",
   "scripts": {
-    "build": "esbuild --bundle --minify --keep-names --platform=node --target=node12 --outdir=dist src/main.ts src/cleanup.ts",
+    "build": "esbuild --bundle --minify --keep-names --platform=node --target=node20 --outdir=dist src/main.ts src/cleanup.ts",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
-    "lint": "eslint src/**/*.ts",
-    "all": "npm run format-check && npm run lint && npm run build"
+    "lint": "eslint src/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -23,17 +22,17 @@
   "author": "Allan Chain",
   "license": "MIT",
   "dependencies": {
-    "@actions/cache": "^3.0.1",
-    "@actions/core": "^1.8.0",
+    "@actions/cache": "^3.2.1",
+    "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1"
   },
   "devDependencies": {
-    "@types/node": "^16.0.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "esbuild": "^0.12.5",
-    "eslint": "^7.27.0",
-    "eslint-plugin-github": "^4.1.5",
-    "prettier": "2.3.0",
-    "typescript": "^5.0.2"
+    "@types/node": "^20.4.1",
+    "@typescript-eslint/parser": "^5.61.0",
+    "esbuild": "^0.18.11",
+    "eslint": "^8.44.0",
+    "eslint-plugin-github": "^4.8.0",
+    "prettier": "3.0.0",
+    "typescript": "^5.1.6"
   }
 }

@@ -16,13 +16,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-      - uses: bahmutov/npm-install@v1
+          node-version: '20.x'
+      - uses: pnpm/action-setup@v2
         with:
-          working-directory: action
+          version: 8.6.6
+          run_install: true
+      - name: Check Style
+        working-directory: action
+        run: |
+          pnpm format-check
+          pnpm lint
       - name: Build action
         working-directory: action
-        run: npm run all
+        run: pnpm build
       - name: Copy assets
         working-directory: action
         run: |
